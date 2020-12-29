@@ -18,11 +18,6 @@ const app = {
 
 // Part 2 - an application that mounts a button
 // const app = {
-//   // The bootstrap lifecycle function is used for one-time initialization
-//   async bootstrap(props) {
-//     console.log("App is initializing", props);
-//   },
-
 //   // The mount lifecycle function is called every time the application is added to the DOM
 //   async mount(props) {
 //     console.log("App is mounting", props);
@@ -46,7 +41,7 @@ const app = {
 //   // The unmount lifecycle is called every time the application is removed from the DOM
 //   async unmount(props) {
 //     console.log("App is unmounting", props);
-//     const domElementContainer = document.getElementById("vanilla");
+//     const domElementContainer = document.getElementById("single-spa-application:vanilla-app");
 //     domElementContainer.innerHTML = "";
 //   },
 // };
