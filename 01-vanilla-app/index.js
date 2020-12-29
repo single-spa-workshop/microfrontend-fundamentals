@@ -1,52 +1,52 @@
 import { registerApplication, start } from "single-spa";
 
 // Part 1 - an application that does nothing
-// const app = {
-//   async bootstrap() {
-//     console.log("App is initializing!", props);
-//   },
-//   async mount() {
-//     console.log("App is mounting", props);
-//   },
-//   async unmount() {
-//     console.log("App is unmounting", props);
-//   }
-// }
-
-// Part 2 - an application that mounts a button
 const app = {
-  // The bootstrap lifecycle function is used for one-time initialization
-  async bootstrap(props) {
-    console.log("App is initializing", props);
+  async bootstrap() {
+    console.log("App is initializing!", props);
   },
-
-  // The mount lifecycle function is called every time the application is added to the DOM
-  async mount(props) {
+  async mount() {
     console.log("App is mounting", props);
-    // For single-spa applications, the dom element container is selected by the application itself.
-    // It is conventional to use single-spa-application:app-name as the ID of the container.
-    // It's highly recommended to use this convention, as single-spa-layout single-spa-react,
-    // single-spa-vue, single-spa-angular, and other libraries default to using it.
-    const domElementContainer = document.getElementById(
-      "single-spa-application:vanilla-app"
-    );
-
-    // Since this example does not use a framework, we use browser DOM apis to create the button
-    const button = document.createElement("button");
-    button.textContent = `Your ${props.adjective} microfrontend!`;
-    button.addEventListener("click", () => alert("Button was clicked"));
-
-    // Each single-spa application should append ("mount") to its dom element container
-    domElementContainer.appendChild(button);
   },
-
-  // The unmount lifecycle is called every time the application is removed from the DOM
-  async unmount(props) {
+  async unmount() {
     console.log("App is unmounting", props);
-    const domElementContainer = document.getElementById("vanilla");
-    domElementContainer.innerHTML = "";
   },
 };
+
+// Part 2 - an application that mounts a button
+// const app = {
+//   // The bootstrap lifecycle function is used for one-time initialization
+//   async bootstrap(props) {
+//     console.log("App is initializing", props);
+//   },
+
+//   // The mount lifecycle function is called every time the application is added to the DOM
+//   async mount(props) {
+//     console.log("App is mounting", props);
+//     // For single-spa applications, the dom element container is selected by the application itself.
+//     // It is conventional to use single-spa-application:app-name as the ID of the container.
+//     // It's highly recommended to use this convention, as single-spa-layout single-spa-react,
+//     // single-spa-vue, single-spa-angular, and other libraries default to using it.
+//     const domElementContainer = document.getElementById(
+//       "single-spa-application:vanilla-app"
+//     );
+
+//     // Since this example does not use a framework, we use browser DOM apis to create the button
+//     const button = document.createElement("button");
+//     button.textContent = `Your ${props.adjective} microfrontend!`;
+//     button.addEventListener("click", () => alert("Button was clicked"));
+
+//     // Each single-spa application should append ("mount") to its dom element container
+//     domElementContainer.appendChild(button);
+//   },
+
+//   // The unmount lifecycle is called every time the application is removed from the DOM
+//   async unmount(props) {
+//     console.log("App is unmounting", props);
+//     const domElementContainer = document.getElementById("vanilla");
+//     domElementContainer.innerHTML = "";
+//   },
+// };
 
 // Register your microfrontend with single-spa
 registerApplication({
