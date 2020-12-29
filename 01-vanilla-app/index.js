@@ -2,12 +2,15 @@ import { registerApplication, start } from "single-spa";
 
 // Part 1 - an application that does nothing
 const app = {
+  // Optional
   async bootstrap(props) {
     console.log("App is initializing!", props);
   },
+  // Required
   async mount(props) {
     console.log("App is mounting", props);
   },
+  // Required
   async unmount(props) {
     console.log("App is unmounting", props);
   },
