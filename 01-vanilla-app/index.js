@@ -16,7 +16,9 @@ import { registerApplication, start } from "single-spa";
 // Part 2 - an application that mounts a button
 const app = {
   // The bootstrap lifecycle function is used for one-time initialization
-  async bootstrap(props) {},
+  async bootstrap(props) {
+    console.log("App is initializing", props);
+  },
 
   // The mount lifecycle function is called every time the application is added to the DOM
   async mount(props) {
