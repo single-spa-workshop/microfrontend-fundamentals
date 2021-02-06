@@ -1,11 +1,11 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { CustomProps } from 'single-spa';
-import { singleSpaPropsSubject } from '../index'
+import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { Subscription } from "rxjs";
+import { CustomProps } from "single-spa";
+import { singleSpaPropsSubject } from "../index";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
+  selector: "app-root",
+  templateUrl: "./app.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
@@ -13,8 +13,10 @@ export class AppComponent {
   subscription: Subscription;
 
   ngOnInit() {
-    this.subscription = singleSpaPropsSubject.subscribe((props: CustomProps) => {
-      this.authToken = props.authToken;
-    })
+    this.subscription = singleSpaPropsSubject.subscribe(
+      (props: CustomProps) => {
+        this.authToken = props.authToken;
+      }
+    );
   }
 }

@@ -4,7 +4,7 @@
 <script>
 export default {
   props: {
-    authToken: String
-  }
-}
+    authToken: String,
+  },
+};
 </script>
