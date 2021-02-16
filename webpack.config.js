@@ -66,6 +66,18 @@ const directoryOptions = {
     standalone: "disabled",
     port: 8304,
   },
+  "05-react-app": {
+    standalone: "disabled",
+    port: 8301,
+  },
+  "05-vue-app": {
+    standalone: "disabled",
+    port: 8302,
+  },
+  "05-angular-app": {
+    standalone: "disabled",
+    port: 8303,
+  },
 };
 
 const defaultOptions = {
@@ -89,7 +101,9 @@ function createConfig({ folder }) {
 
   const useStandalonePlugin = options.standalone !== "index.html";
 
-  const htmlWebpackOptions = {};
+  const htmlWebpackOptions = {
+    inject: 'body'
+  };
 
   if (!useStandalonePlugin) {
     htmlWebpackOptions.template = path.resolve(__dirname, folder, "index.html");
@@ -109,6 +123,29 @@ function createConfig({ folder }) {
           test: /\.vue$/,
           use: ["vue-loader"],
         },
+        {
+          test: /.css$/,
+          use: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                modules: {
+                  localIdentName: folder
+                },
+              }
+            }
+          ],
+          include: /\.module\.css$/
+        },
+        {
+          test: /\.css$/,
+          use: [
+            'style-loader',
+            'css-loader'
+          ],
+          exclude: /\.module.css$/
+        }
       ],
     },
     output: {

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack serve",
-    "postinstall": "ngcc --no-tsconfig --target @angular/core --properties es2015 && ngcc --no-tsconfig --target @angular/platform-browser --properties es2015 && ngcc --no-tsconfig --target @angular/common --properties es2015 && ngcc --no-tsconfig --target @angular/router --properties es2015 && ngcc --no-tsconfig --target @angular/platform-browser --properties es2015 && cd 02-angular-app && ngc && cd ../04-angular-app && ngc && cd ..",
+    "postinstall": "ngcc --no-tsconfig --target @angular/core --properties es2015 && ngcc --no-tsconfig --target @angular/platform-browser --properties es2015 && ngcc --no-tsconfig --target @angular/common --properties es2015 && ngcc --no-tsconfig --target @angular/router --properties es2015 && ngcc --no-tsconfig --target @angular/platform-browser --properties es2015 && cd 02-angular-app && ngc && cd ../04-angular-app && ngc && cd ../05-angular-app && ngc && cd ..",
     "format": "prettier --write ."
   },
   "repository": {
@@ -34,6 +34,7 @@
     "babel-loader": "^8.2.2",
     "concurrently": "^5.3.0",
     "cross-spawn": "^7.0.3",
+    "css-loader": "^5.0.2",
     "html-webpack-plugin": "^5.1.0",
     "http-server": "^0.12.3",
     "husky": "^5.0.9",
@@ -41,6 +42,7 @@
     "pretty-quick": "^3.1.0",
     "source-map": "^0.7.3",
     "standalone-single-spa-webpack-plugin": "^2.0.0",
+    "style-loader": "^2.0.0",
     "typescript": "^4.1.5",
     "vue": "^2.6.12",
     "vue-loader": "^15.9.6",

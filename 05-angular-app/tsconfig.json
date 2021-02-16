@@ -1,0 +1,7 @@
+{
+  "files": ["index.ts"],
+  "compilerOptions": {
+    "lib": ["DOM", "ES2020"],
+    "experimentalDecorators": true
+  }
+}
