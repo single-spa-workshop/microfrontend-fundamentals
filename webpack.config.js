@@ -50,6 +50,22 @@ const directoryOptions = {
     standalone: "disabled",
     port: 8302,
   },
+  "04-react-navbar": {
+    standalone: "disabled",
+    port: 8301,
+  },
+  "04-react-app": {
+    standalone: "disabled",
+    port: 8302,
+  },
+  "04-vue-app": {
+    standalone: "disabled",
+    port: 8303,
+  },
+  "04-angular-app": {
+    standalone: "disabled",
+    port: 8304,
+  },
 };
 
 const defaultOptions = {
@@ -79,7 +95,7 @@ function createConfig({ folder }) {
     htmlWebpackOptions.template = path.resolve(__dirname, folder, "index.html");
   }
 
-  return {
+  const config = {
     entry: path.resolve(__dirname, `${folder}/index.js`),
     mode: "development",
     module: {
@@ -95,6 +111,9 @@ function createConfig({ folder }) {
         },
       ],
     },
+    output: {
+      publicPath: "/"
+    },
     devtool: "source-map",
     plugins: [
       new VueLoaderPlugin(),
@@ -107,10 +126,13 @@ function createConfig({ folder }) {
     ].filter(Boolean),
     resolve: {
       extensions: [".jsx", ".js", ".ts", ".tsx"],
+      preferRelative: true
     },
     devServer: {
       historyApiFallback: true,
       port: options.port,
     },
   };
+
+  return config;
 }
