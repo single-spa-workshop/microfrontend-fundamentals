@@ -1,6 +1,7 @@
 <template>
   <p class="with-border">
-    The LeakyChild component uses global css that is susceptible to naming collisions.
+    The LeakyChild component uses global css that is susceptible to naming
+    collisions.
   </p>
 </template>
 <style>

@@ -102,7 +102,7 @@ function createConfig({ folder }) {
   const useStandalonePlugin = options.standalone !== "index.html";
 
   const htmlWebpackOptions = {
-    inject: 'body'
+    inject: "body",
   };
 
   if (!useStandalonePlugin) {
@@ -126,30 +126,27 @@ function createConfig({ folder }) {
         {
           test: /.css$/,
           use: [
-            'style-loader',
+            "style-loader",
             {
-              loader: 'css-loader',
+              loader: "css-loader",
               options: {
                 modules: {
-                  localIdentName: folder
+                  localIdentName: folder,
                 },
-              }
-            }
+              },
+            },
           ],
-          include: /\.module\.css$/
+          include: /\.module\.css$/,
         },
         {
           test: /\.css$/,
-          use: [
-            'style-loader',
-            'css-loader'
-          ],
-          exclude: /\.module.css$/
-        }
+          use: ["style-loader", "css-loader"],
+          exclude: /\.module.css$/,
+        },
       ],
     },
     output: {
-      publicPath: "/"
+      publicPath: "/",
     },
     devtool: "source-map",
     plugins: [
@@ -163,7 +160,7 @@ function createConfig({ folder }) {
     ].filter(Boolean),
     resolve: {
       extensions: [".jsx", ".js", ".ts", ".tsx"],
-      preferRelative: true
+      preferRelative: true,
     },
     devServer: {
       historyApiFallback: true,

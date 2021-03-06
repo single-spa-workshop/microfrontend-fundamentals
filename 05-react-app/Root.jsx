@@ -1,4 +1,4 @@
-import ScopedChild from './ScopedChild'
+import ScopedChild from "./ScopedChild";
 // import LeakyChild from './LeakyChild'
 
 export default function Root(props) {

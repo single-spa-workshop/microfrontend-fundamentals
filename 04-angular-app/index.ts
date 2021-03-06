@@ -9,7 +9,7 @@ export const singleSpaPropsSubject = new ReplaySubject(1);
 
 declare global {
   interface Window {
-    angularApp: LifeCycles<unknown>
+    angularApp: LifeCycles<unknown>;
   }
 }
 

@@ -5,5 +5,4 @@ import { Component, ChangeDetectionStrategy } from "@angular/core";
   templateUrl: "./scoped-child.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScopedChildComponent {
-}
+export class ScopedChildComponent {}

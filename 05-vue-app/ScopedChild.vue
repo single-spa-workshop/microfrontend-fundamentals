@@ -1,6 +1,7 @@
 <template>
   <p class="with-border">
-    The ScopedChild component uses global css that is susceptible to naming collisions.
+    The ScopedChild component uses global css that is susceptible to naming
+    collisions.
   </p>
 </template>
 <style scoped>

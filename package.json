@@ -5,17 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack serve",
-    "postinstall": "ngcc --no-tsconfig --target @angular/core --properties es2015 && ngcc --no-tsconfig --target @angular/platform-browser --properties es2015 && ngcc --no-tsconfig --target @angular/common --properties es2015 && ngcc --no-tsconfig --target @angular/router --properties es2015 && ngcc --no-tsconfig --target @angular/platform-browser --properties es2015 && cd 02-angular-app && ngc && cd ../04-angular-app && ngc && cd ../05-angular-app && ngc && cd ..",
+    "postinstall": "husky install && ngcc --no-tsconfig --target @angular/core --properties es2015 && ngcc --no-tsconfig --target @angular/platform-browser --properties es2015 && ngcc --no-tsconfig --target @angular/common --properties es2015 && ngcc --no-tsconfig --target @angular/router --properties es2015 && ngcc --no-tsconfig --target @angular/platform-browser --properties es2015 && cd 02-angular-app && ngc && cd ../04-angular-app && ngc && cd ../05-angular-app && ngc && cd ..",
     "format": "prettier --write ."
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/single-spa-workshop/microfrontend-basics.git"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
   },
   "author": "Joel Denning",
   "license": "MIT",
@@ -64,6 +59,7 @@
     "rxjs": "^6.6.3",
     "single-spa": "^5.9.1",
     "single-spa-angular": "^4.9.2",
+    "single-spa-layout": "^1.5.0",
     "single-spa-react": "^4.1.0",
     "single-spa-vue": "^2.2.0",
     "vue-router": "^3.5.1"

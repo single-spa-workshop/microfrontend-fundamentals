@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from "@angular/core";
 
 @Component({
-  selector: 'angular-subroute',
-  templateUrl: './subroute.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  selector: "angular-subroute",
+  templateUrl: "./subroute.component.html",
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AngularSubRouteComponent {}
