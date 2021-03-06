@@ -78,6 +78,18 @@ const directoryOptions = {
     standalone: "disabled",
     port: 8303,
   },
+  "06-settings": {
+    standalone: "disabled",
+    port: 8301,
+  },
+  "06-subscription": {
+    standalone: "disabled",
+    port: 8302,
+  },
+  "06-home": {
+    standalone: "disabled",
+    port: 8303,
+  },
 };
 
 const defaultOptions = {
@@ -142,6 +154,11 @@ function createConfig({ folder }) {
           test: /\.css$/,
           use: ["style-loader", "css-loader"],
           exclude: /\.module.css$/,
+        },
+        {
+          test: /\.html$/,
+          use: ["raw-loader"],
+          exclude: /node_modules/,
         },
       ],
     },

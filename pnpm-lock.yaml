@@ -32,6 +32,7 @@ devDependencies:
   husky: 5.0.9
   prettier: 2.2.1
   pretty-quick: 3.1.0_prettier@2.2.1
+  raw-loader: 4.0.2_webpack@5.22.0
   source-map: 0.7.3
   standalone-single-spa-webpack-plugin: 2.0.0_5818328ade82780219627755e9a973db
   style-loader: 2.0.0_webpack@5.22.0
@@ -4004,6 +4005,18 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha512-4Oz8DUIwdvoa5qMJelxipzi/iJIi40O5cGV1wNYp5hvZP8ZN0T+jiNkL0QepXs+EsQ9XJ8ipEDoiH70ySUJP3Q==
+  /raw-loader/4.0.2_webpack@5.22.0:
+    dependencies:
+      loader-utils: 2.0.0
+      schema-utils: 3.0.0
+      webpack: 5.22.0_webpack-cli@4.5.0
+    dev: true
+    engines:
+      node: '>= 10.13.0'
+    peerDependencies:
+      webpack: ^4.0.0 || ^5.0.0
+    resolution:
+      integrity: sha512-ZnScIV3ag9A4wPX/ZayxL/jZH+euYb6FcUinPcgiQW0+UBtEv0O6Q3lGd3cqJ+GHH+rksEv3Pj99oxJ3u3VIKA==
   /react-dom/17.0.1_react@17.0.1:
     dependencies:
       loose-envify: 1.4.0
@@ -5331,6 +5344,7 @@ specifiers:
   husky: ^5.0.9
   prettier: ^2.2.1
   pretty-quick: ^3.1.0
+  raw-loader: ^4.0.2
   react: ^17.0.1
   react-dom: ^17.0.1
   react-router: ^5.2.0

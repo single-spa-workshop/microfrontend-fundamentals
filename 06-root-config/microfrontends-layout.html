@@ -1,10 +1,24 @@
 <single-spa-router>
-  <route path="/settings">
-    <h1>Settings</h1>
-    <application name="settings-widget"></application>
-    <application name="subscription-widget"></application>
+  <nav>
+    <ul>
+      <li>
+        <a href="/profile" onclick="singleSpaNavigate(event)">Profile</a>
+      </li>
+      <li>
+        <a href="/" onclick="singleSpaNavigate(event)"> Home </a>
+      </li>
+    </ul>
+  </nav>
+  <route path="/profile">
+    <h1>Profile</h1>
+    <application name="settings"></application>
+    <application name="subscription"></application>
+  </route>
+  <redirect from="/settings" to="/profile"></redirect>
+  <route path="/" exact>
+    <application name="home"></application>
   </route>
   <route default>
-    <h1>This page was not found</h1>
+    <h1>404 Not Found</h1>
   </route>
 </single-spa-router>
