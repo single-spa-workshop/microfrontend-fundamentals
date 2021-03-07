@@ -4,6 +4,7 @@ dependencies:
   '@angular/platform-browser': 11.2.0_14bad239372b2198eb7cbb4d340febfa
   '@angular/platform-browser-dynamic': 11.2.0_4be395d0499823a496db43e0a2badb2a
   '@angular/router': 11.2.0_29430d8ec16341313bd9c97250556c01
+  '@types/systemjs': 6.1.0
   react: 17.0.1
   react-dom: 17.0.1_react@17.0.1
   react-router: 5.2.0_react@17.0.1
@@ -1212,6 +1213,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-wWKOClTTiizcZhXnPY4wikVAwmdYHp8q6DmC+EJUzAMsycb7HB32Kh9RN4+0gExjmPmZSAQjgURXIGATPegAvA==
+  /@types/systemjs/6.1.0:
+    dev: false
+    resolution:
+      integrity: sha512-akhlviqwowzRNiz3ooAbkjvyMO8cikBqap9z/0yfvMAb6vIsp91Rfox67qtgIhZosWP01MVSTwsgSFYWo4SWQA==
   /@vue/component-compiler-utils/3.2.0:
     dependencies:
       consolidate: 0.15.1
@@ -5335,6 +5340,7 @@ specifiers:
   '@babel/plugin-proposal-decorators': ^7.12.13
   '@babel/preset-env': ^7.12.16
   '@babel/preset-react': ^7.12.13
+  '@types/systemjs': ^6.1.0
   babel-loader: ^8.2.2
   concurrently: ^5.3.0
   cross-spawn: ^7.0.3

@@ -90,11 +90,30 @@ const directoryOptions = {
     standalone: "disabled",
     port: 8303,
   },
+  "07-root-config": {
+    port: 8300,
+    format: "system",
+    externals: ["vue", "single-spa"],
+  },
+  "07-home": {
+    port: 8301,
+    standalone: "disabled",
+    format: "system",
+    externals: ["vue", "single-spa"],
+  },
+  "07-navbar": {
+    port: 8302,
+    standalone: "disabled",
+    format: "system",
+    externals: ["vue", "single-spa"],
+  },
 };
 
 const defaultOptions = {
   standalone: "index.html",
   port: null,
+  format: null,
+  externals: [],
 };
 
 module.exports = createConfig({ folder: dir });
@@ -109,7 +128,9 @@ function createConfig({ folder }) {
     });
   }
 
-  const options = directoryOptions[folder] || defaultOptions;
+  const options = directoryOptions[folder]
+    ? Object.assign({}, defaultOptions, directoryOptions[folder])
+    : defaultOptions;
 
   const useStandalonePlugin = options.standalone !== "index.html";
 
@@ -124,6 +145,7 @@ function createConfig({ folder }) {
   const config = {
     entry: path.resolve(__dirname, `${folder}/index.js`),
     mode: "development",
+    externals: options.externals,
     module: {
       rules: [
         {
@@ -164,6 +186,7 @@ function createConfig({ folder }) {
     },
     output: {
       publicPath: "/",
+      libraryTarget: options.format,
     },
     devtool: "source-map",
     plugins: [
@@ -182,6 +205,9 @@ function createConfig({ folder }) {
     devServer: {
       historyApiFallback: true,
       port: options.port,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
     },
   };
 

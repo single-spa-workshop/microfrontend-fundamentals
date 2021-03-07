@@ -53,6 +53,7 @@
     "@angular/platform-browser": "^11.2.0",
     "@angular/platform-browser-dynamic": "^11.2.0",
     "@angular/router": "^11.2.0",
+    "@types/systemjs": "^6.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router": "^5.2.0",
