@@ -5,21 +5,24 @@ const fs = require("fs");
 const spawn = require("cross-spawn");
 const StandaloneSingleSpaPlugin = require("standalone-single-spa-webpack-plugin");
 
-const serveIndex = process.argv.findIndex((arg) => arg === "serve");
-if (serveIndex < 0 || serveIndex === process.argv.length - 1) {
+const targetIndex = process.argv.findIndex(
+  (arg) => arg === "serve" || arg === "production"
+);
+const target = process.argv[targetIndex] === "production" ? "build" : "serve";
+if (targetIndex < 0 || targetIndex === process.argv.length - 1) {
   console.error(
     `
-Must run start script with directory name:
+Must run ${target} script with directory name:
 
-npm start -- 01-vanilla-app
-yarn start 01-vanilla-app
-pnpm start -- 01-vanilla-app
+npm ${target} -- 01-vanilla-app
+yarn ${target} 01-vanilla-app
+pnpm ${target} -- 01-vanilla-app
 `.trim()
   );
   process.exit(1);
 }
 
-let dir = process.argv[serveIndex + 1];
+let dir = process.argv[targetIndex + 1];
 
 if (dir.endsWith("/")) {
   dir = dir.slice(0, dir.length - 1);
@@ -187,6 +190,7 @@ function createConfig({ folder }) {
     output: {
       publicPath: "/",
       libraryTarget: options.format,
+      path: path.resolve(__dirname, `dist/${folder}`),
     },
     devtool: "source-map",
     plugins: [

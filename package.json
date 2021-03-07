@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack serve",
+    "build": "webpack --mode production",
     "postinstall": "husky install && ngcc --no-tsconfig --target @angular/core --properties es2015 && ngcc --no-tsconfig --target @angular/platform-browser --properties es2015 && ngcc --no-tsconfig --target @angular/common --properties es2015 && ngcc --no-tsconfig --target @angular/router --properties es2015 && ngcc --no-tsconfig --target @angular/platform-browser --properties es2015 && cd 02-angular-app && ngc && cd ../04-angular-app && ngc && cd ../05-angular-app && ngc && cd ..",
     "format": "prettier --write ."
   },
