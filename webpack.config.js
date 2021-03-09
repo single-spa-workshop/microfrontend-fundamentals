@@ -110,6 +110,29 @@ const directoryOptions = {
     format: "system",
     externals: ["vue", "single-spa"],
   },
+  "08-root-config": {
+    port: 8300,
+    format: "system",
+    externals: ["vue", "vue-router", "single-spa"],
+  },
+  "08-home": {
+    port: 8301,
+    standalone: "disabled",
+    format: "system",
+    externals: ["vue", "vue-router", "single-spa", "navbar"],
+  },
+  "08-navbar": {
+    port: 8302,
+    standalone: "disabled",
+    format: "system",
+    externals: ["vue", "vue-router", "single-spa"],
+  },
+  "08-settings": {
+    port: 8303,
+    standalone: "disabled",
+    format: "system",
+    externals: ["react", "react-dom", "single-spa", "navbar"],
+  },
 };
 
 const defaultOptions = {
