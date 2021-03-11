@@ -133,13 +133,21 @@ const directoryOptions = {
     format: "system",
     externals: ["react", "react-dom", "single-spa", "navbar"],
   },
+  "09-account-settings": {
+    format: "system",
+    https: true,
+    externals: ["react", "react-dom", "single-spa", "navbar"],
+    importMapUrl: new URL("https://polyglot.microfrontends.app/importmap.json"),
+  },
 };
 
 const defaultOptions = {
-  standalone: "index.html",
+  standalone: true,
   port: null,
   format: null,
   externals: [],
+  https: false,
+  importMapUrl: null,
 };
 
 module.exports = createConfig({ folder: dir });
@@ -166,6 +174,24 @@ function createConfig({ folder }) {
 
   if (!useStandalonePlugin) {
     htmlWebpackOptions.template = path.resolve(__dirname, folder, "index.html");
+  }
+
+  let https;
+
+  if (options.https) {
+    try {
+      https = {
+        key: fs.readFileSync(path.resolve(__dirname, "localhost.key"), "utf-8"),
+        cert: fs.readFileSync(
+          path.resolve(__dirname, "localhost.crt"),
+          "utf-8"
+        ),
+      };
+    } catch {
+      console.warn(
+        "Consider creating an SSL certificate at ./localhost.key and ./localhost.crt, so you can tell your operating system to trust the certificate"
+      );
+    }
   }
 
   const config = {
@@ -223,6 +249,7 @@ function createConfig({ folder }) {
         new StandaloneSingleSpaPlugin({
           appOrParcelName: folder,
           disabled: options.standalone === "disabled",
+          importMapUrl: options.importMapUrl,
         }),
     ].filter(Boolean),
     resolve: {
@@ -235,6 +262,12 @@ function createConfig({ folder }) {
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
+      firewall: false,
+      host: "localhost",
+      client: {
+        host: "localhost",
+      },
+      https,
     },
   };
 
