@@ -45,6 +45,18 @@ pnpm start -- 01-vanilla-app
 }
 
 const directoryOptions = {
+  "01-vanilla-app": {
+    standalone: false,
+    port: 8301,
+  },
+  "02-angular-app": {
+    standalone: false,
+    port: 8302,
+  },
+  "02-vue-app": {
+    standalone: false,
+    port: 8303,
+  },
   "03-react-app": {
     standalone: "disabled",
     port: 8301,
@@ -142,7 +154,7 @@ const directoryOptions = {
 };
 
 const defaultOptions = {
-  standalone: true,
+  standalone: false,
   port: null,
   format: null,
   externals: [],
@@ -166,14 +178,18 @@ function createConfig({ folder }) {
     ? Object.assign({}, defaultOptions, directoryOptions[folder])
     : defaultOptions;
 
-  const useStandalonePlugin = options.standalone !== "index.html";
+  const useStandalonePlugin = options.standalone;
 
   const htmlWebpackOptions = {
     inject: "body",
   };
 
   if (!useStandalonePlugin) {
-    htmlWebpackOptions.template = path.resolve(__dirname, folder, "index.html");
+    try {
+      const htmlPath = path.resolve(__dirname, folder, "index.html");
+      fs.statSync(htmlPath);
+      htmlWebpackOptions.template = htmlPath;
+    } catch (err) {}
   }
 
   let https;
@@ -238,7 +254,7 @@ function createConfig({ folder }) {
     },
     output: {
       publicPath: "/",
-      libraryTarget: options.format,
+      libraryTarget: options.format || undefined,
       path: path.resolve(__dirname, `dist/${folder}`),
     },
     devtool: "source-map",
