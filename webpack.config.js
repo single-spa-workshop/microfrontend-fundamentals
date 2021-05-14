@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const fs = require("fs");
 const spawn = require("cross-spawn");
 const StandaloneSingleSpaPlugin = require("standalone-single-spa-webpack-plugin");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
 
 const targetIndex = process.argv.findIndex(
   (arg) => arg === "serve" || arg === "production"
@@ -23,6 +25,8 @@ pnpm ${target} -- 01-vanilla-app
 }
 
 let dir = process.argv[targetIndex + 1];
+
+let analyze = process.argv.includes("--analyze");
 
 if (dir.endsWith("/")) {
   dir = dir.slice(0, dir.length - 1);
@@ -267,6 +271,7 @@ function createConfig({ folder }) {
           disabled: options.standalone === "disabled",
           importMapUrl: options.importMapUrl,
         }),
+      analyze && new BundleAnalyzerPlugin(),
     ].filter(Boolean),
     resolve: {
       extensions: [".jsx", ".js", ".ts", ".tsx"],
