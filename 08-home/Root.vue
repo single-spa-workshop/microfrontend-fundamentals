@@ -4,7 +4,9 @@
 
   <!-- Correct: position home below the navbar, using cross-microfrontend imports  -->
   <BelowNav>
-    <h1>Vue Home page</h1>
+    <div class="home">
+      <h1>Vue Home page</h1>
+    </div>
   </BelowNav>
 </template>
 <script>
@@ -16,3 +18,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.home {
+  background-color: lightseagreen;
+}
+</style>

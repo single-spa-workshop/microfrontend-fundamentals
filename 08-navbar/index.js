@@ -25,3 +25,5 @@ export const { bootstrap, mount, unmount, update } = app;
 export { getNavHeightPx } from "./Root.vue";
 
 export { default as BelowNav } from "./BelowNav.vue";
+
+export { default as SingleSpaWorkshopLogo } from "./SingleSpaWorkshopLogo.vue";
