@@ -1,22 +1,26 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import { createApp, h } from "vue";
 import singleSpaVue from "single-spa-vue";
 import Root from "./Root.vue";
+import { createRouter, createWebHistory } from "vue-router";
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [],
+});
 
 const app = singleSpaVue({
-  Vue,
+  createApp,
   appOptions: {
-    router: new VueRouter({
-      mode: "history",
-      routes: [],
-    }),
-    render(h) {
+    render() {
       return h(Root, {
         props: {
           authToken: this.authToken,
         },
       });
     },
+  },
+  handleInstance(app) {
+    app.use(router);
   },
 });
 
