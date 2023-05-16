@@ -1,4 +1,7 @@
 import { registerApplication, start } from "single-spa";
+import "vue";
+
+System.set(System.resolve("vue"), window.Vue);
 
 registerApplication({
   name: "home",

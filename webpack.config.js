@@ -1,11 +1,11 @@
 const path = require("path");
-const VueLoaderPlugin = require("vue-loader/lib/plugin");
+const { VueLoaderPlugin } = require("vue-loader");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const fs = require("fs");
 const spawn = require("cross-spawn");
 const StandaloneSingleSpaPlugin = require("standalone-single-spa-webpack-plugin");
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-  .BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 const targetIndex = process.argv.findIndex(
   (arg) => arg === "serve" || arg === "production"
@@ -18,7 +18,7 @@ Must run ${target} script with directory name:
 
 npm ${target} -- 01-vanilla-app
 yarn ${target} 01-vanilla-app
-pnpm ${target} -- 01-vanilla-app
+pnpm ${target} 01-vanilla-app
 `.trim()
   );
   process.exit(1);
@@ -127,7 +127,6 @@ const directoryOptions = {
     externals: ["vue", "single-spa"],
   },
   "08-root-config": {
-    port: 8300,
     format: "system",
     externals: ["vue", "vue-router", "single-spa"],
   },
@@ -227,7 +226,10 @@ function createConfig({ folder }) {
         },
         {
           test: /\.vue$/,
-          use: ["vue-loader"],
+          loader: "vue-loader",
+          options: {
+            hotReload: false,
+          },
         },
         {
           test: /.css$/,
@@ -279,15 +281,16 @@ function createConfig({ folder }) {
     },
     devServer: {
       historyApiFallback: true,
-      port: options.port,
+      port: options.port ?? 8080,
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
-      firewall: false,
-      host: "localhost",
       client: {
-        host: "localhost",
+        webSocketURL: {
+          hostname: "localhost",
+        },
       },
+      allowedHosts: "all",
       https,
     },
   };

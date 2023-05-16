@@ -1,8 +1,7 @@
 import { pathToActiveWhen, registerApplication, start } from "single-spa";
-import Vue from "vue";
-import VueRouter from "vue-router";
+import "vue";
 
-Vue.use(VueRouter);
+System.set(System.resolve("vue"), window.Vue);
 
 registerApplication({
   name: "home",
@@ -22,4 +21,7 @@ registerApplication({
   activeWhen: ["/settings"],
 });
 
-start();
+System.import("vue-router").then(() => {
+  System.set(System.resolve("vue-router"), window.VueRouter);
+  start();
+});

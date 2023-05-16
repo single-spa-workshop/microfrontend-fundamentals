@@ -1,14 +1,12 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import { createApp, h } from "vue";
+import { createRouter, createWebHistory } from "vue-router";
 import singleSpaVue from "single-spa-vue";
 import Root from "./Root.vue";
 import Home from "./Home.vue";
 import SubRoute from "./SubRoute.vue";
 
-Vue.use(VueRouter);
-
-const router = new VueRouter({
-  mode: "history",
+const router = createRouter({
+  history: createWebHistory(),
   base: "/",
   routes: [
     { path: "/vue", component: Home },
@@ -17,15 +15,17 @@ const router = new VueRouter({
 });
 
 window.vueApp = singleSpaVue({
-  Vue,
+  createApp,
   appOptions: {
-    router,
-    render(h) {
+    render() {
       return h(Root, {
         props: {
           name: this.name,
         },
       });
     },
+  },
+  handleInstance(app) {
+    app.use(router);
   },
 });
