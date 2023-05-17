@@ -6,7 +6,6 @@ window.vueApp = singleSpaVue({
   createApp,
   appOptions: {
     render() {
-      console.log("render", this);
       return h(Root, {
         name: this.name,
       });
