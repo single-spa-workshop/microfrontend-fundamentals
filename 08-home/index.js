@@ -7,9 +7,7 @@ const app = singleSpaVue({
   appOptions: {
     render() {
       return h(Root, {
-        props: {
-          authToken: this.authToken,
-        },
+        authToken: this.authToken,
       });
     },
   },

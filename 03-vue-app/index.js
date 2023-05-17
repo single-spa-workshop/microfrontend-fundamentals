@@ -7,9 +7,7 @@ window.vueApp = singleSpaVue({
   appOptions: {
     render() {
       return h(Root, {
-        props: {
-          name: this.name,
-        },
+        name: this.name,
       });
     },
   },

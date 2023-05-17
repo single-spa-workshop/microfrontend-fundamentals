@@ -1,16 +1,15 @@
-import Vue from "vue";
+import { createApp, h } from "vue";
 import singleSpaVue from "single-spa-vue";
 import { registerApplication, start } from "single-spa";
 import Root from "./Root.vue";
 
 const app = singleSpaVue({
-  Vue,
+  createApp,
   appOptions: {
-    render(h) {
+    render() {
       return h(Root, {
-        props: {
-          authToken: this.authToken,
-        },
+        authToken: this.authToken,
+        name: this.name,
       });
     },
   },
